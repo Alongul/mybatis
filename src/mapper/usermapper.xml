@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="usermapper">
+  <select id="selectUserByid" resultType="dll_bean.user" parameterType="Integer">
+    select * from user where id = #{id}<!-- 占位符 -->
+  </select>
+  <select id="selectUserByname" parameterType="String" resultType="dll_bean.user">
+    select * from user where name like "%"#{name}"%"
+  </select>
+  <insert id="insertuser" parameterType="dll_bean.user">
+  insert into user values(#{id},#{name},#{sex},#{password})
+  </insert>
+  <update id="updateuser" parameterType="dll_bean.user">
+  update user set name=#{name} where id=#{id}
+  </update>
+</mapper>
